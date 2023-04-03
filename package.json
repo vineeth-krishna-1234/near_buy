@@ -5,8 +5,8 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node index.js",
-    "build":"",
-    "dev":"nodemon node index.js",
+    "build": "",
+    "dev": "nodemon node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "kill": "kill -9 $(sudo lsof -i :9000 | sed -n '2 p' | cut -d' ' -f5 )"
   },
@@ -30,6 +30,8 @@
     "mongoose": "^7.0.2",
     "node-email-check": "^1.0.4",
     "nodemon": "^2.0.21",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
     "redis": "^4.6.5"
   },
   "devDependencies": {
