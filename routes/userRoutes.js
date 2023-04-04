@@ -4,6 +4,8 @@ import pkg from "express";
 import { SignupView } from "../controllers/userViews/signup.js";
 import { searchView } from "../controllers/userViews/search.js";
 import { loginView } from "../controllers/userViews/login.js";
+import { nearbyVendors } from "../controllers/userViews/nearbyVendors.js";
+
 //jwt auth
 import { authenticateJwtToken } from "../utils/jwtUtils.js";
 
@@ -15,5 +17,7 @@ userRoutes.post("/signup", SignupView);
 userRoutes.post("/login", loginView);
 //protected route
 userRoutes.use("/auth", authenticateJwtToken, protectedRoutes);
-protectedRoutes.get("/search", authenticateJwtToken, searchView);
+protectedRoutes.get("/search", searchView);
+protectedRoutes.post("/nearby_vendors", nearbyVendors);
+
 export default userRoutes;

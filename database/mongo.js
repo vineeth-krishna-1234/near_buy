@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import chalk from "chalk";
 import { statusLog } from "../utils/logs.js";
 import * as dotenv from "dotenv";
 dotenv.config();
