@@ -29,14 +29,19 @@ const vendorSchema = new Schema({
     require: true,
   },
   imageUrl: { type: String, default: "image_url" },
-  location: {
-    type: {
-      type: String,
-      enum: ["Point"],
-    },
-    coordinates: {
-      type: [Number],
-    },
+  startPoint: {
+    type: Object,
+    properties: {
+      type: {
+        type: String,
+        enum: 'Point',
+        default: 'Point'
+      },
+      coordinates: {
+        type: [Number],
+        default: [0, 0]
+      }
+    }
   },
   products: { type: [mongoose.Types.ObjectId], ref: productModel },
   rating: {
@@ -65,5 +70,5 @@ const vendorSchema = new Schema({
     ],
   },
 });
-
+vendorSchema.index({ startPoint: '2dsphere' });
 export const vendorModel = new model("vendorCollection", vendorSchema);
