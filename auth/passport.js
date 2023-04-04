@@ -15,7 +15,7 @@ export const initializePassport = () => {
         passReqToCallback: true,
       },
       async (request, accessToken, refreshToken, profile, done) => {
-        //get the user data from google
+        //get the user data from google and redirect
         console.log(accessToken,refreshToken)
         try {
           //find the user in our database
@@ -25,18 +25,10 @@ export const initializePassport = () => {
             //If user present in our database.
             done(null, user);
           } else {
-            console.log(profile);
-            const newUser = {
-              googleId: profile.id,
-              displayName: profile.displayName,
-              firstName: profile.name.givenName,
-              lastName: profile.name.familyName,
-              image: profile.photos[0].value,
-              email: profile.emails[0].value,
-            };
-            // if user is not preset in our database save user data to database.
-            user = await userModels.create(newUser);
-            done(null, user);
+            
+            // if user is not preset redirect the user to next page and get the requires details and save user data to database.
+            
+            done(null, true);
           }
         } catch (err) {
           console.error(err);
@@ -46,11 +38,10 @@ export const initializePassport = () => {
   );
 
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, true);
   });
 
   passport.deserializeUser(async (id, done) => {
-    let a = await userModels.findById(id);
-    done(null,a)
+    done(null,true)
   });
 };
