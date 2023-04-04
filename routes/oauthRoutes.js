@@ -1,18 +1,17 @@
 import pkg from "express";
-import { Passport } from "passport/lib";
+import passport from "passport";
 const oauthRoutes = pkg.Router();
 
-oauthRoutes.get(
-  "/google",
-  Passport.authenticate("google", { scope: ["profile"] })
-);
 
-oauthRoutes.get(
-  "/google/callback",
-  Passport.authenticate("google", { failureRedirect: "/auth/login" }),
-  function (req, res) {
-    // Successful authentication, redirect home.
-    res.redirect("/");
-  }
-);
+oauthRoutes.get('/google',
+  passport.authenticate('google', { scope:
+      [ 'email', 'profile' ] }
+));
+
+oauthRoutes.get( '/google/callback',
+    passport.authenticate( 'google', {
+        successRedirect: '/auth/google/success',
+        failureRedirect: '/auth/google/failure'
+}));
+
 export default oauthRoutes;
