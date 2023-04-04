@@ -1,3 +1,1 @@
-export const searchView = (req, res) => {
-  res.send("hi");
-};
+export const searchView = (req, res) => {};

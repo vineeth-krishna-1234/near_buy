@@ -1,6 +1,7 @@
+//db models
 import { vendorModel } from "../../schema/vendorSchema.js";
 
-export const nearbyVendors = (req, res) => {
+export const nearbyVendorsView = (req, res) => {
   const secondarySchema = req.body;
   const reqDistance = req.body.distance;
   const reqLocation = [11, 75];

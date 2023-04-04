@@ -1,4 +1,3 @@
-import { response } from "express";
 import { productModel } from "../../schema/productSchema.js";
 import { vendorModel } from "../../schema/vendorSchema.js";
 import { errorLog } from "../../utils/logs.js";
