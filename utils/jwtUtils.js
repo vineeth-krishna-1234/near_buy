@@ -1,11 +1,13 @@
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 dotenv.config();
+
 export const createJwtToken = (data) => {
   return jwt.sign(data, process.env.JWT_SECRET_TOKEN, {
     expiresIn: "1800s",
   });
 };
+
 
 export const authenticateJwtToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
