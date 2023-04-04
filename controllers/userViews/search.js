@@ -1,3 +1,4 @@
+
 import { vendorModel } from "../../schema/vendorSchema.js";
 export const searchView = async (req, res) => {
   const data = await vendorModel
@@ -17,3 +18,4 @@ export const searchView = async (req, res) => {
     });
 
 };
+

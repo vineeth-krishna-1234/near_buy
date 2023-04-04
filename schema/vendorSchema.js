@@ -54,6 +54,21 @@ const vendorSchema = new Schema({
   offers: {
     type: String,
   },
+  type: {
+    type: String,
+    enum: [
+      "Supermarket",
+      "Grocery",
+      "Clothes",
+      "Footwears",
+      "Pets",
+      "Gifts",
+      "Electronics",
+      "Stationery",
+      "Parlour",
+      "Bakery",
+    ],
+  },
 });
 vendorSchema.index({ startPoint: '2dsphere' });
 export const vendorModel = new model("vendorCollection", vendorSchema);
