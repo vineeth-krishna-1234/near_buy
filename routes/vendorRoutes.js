@@ -5,7 +5,8 @@ import { loginView } from "../controllers/vendorViews/login.js";
 import { SignupView } from "../controllers/vendorViews/signup.js";
 //jwt auth
 import { authenticateJwtToken } from "../utils/jwtUtils.js";
-import { tryCatch } from "../utils/errorHandlers.js";
+import { tryCatch } from "../utils/errorHandler.js";
+
 
 const vendorRoutes = pkg.Router();
 const protectedRoutes = pkg.Router();
@@ -13,6 +14,7 @@ const protectedRoutes = pkg.Router();
 vendorRoutes.post("/signup", tryCatch(SignupView));
 vendorRoutes.post("/login", tryCatch(loginView));
 //protected routes
+
 vendorRoutes.use("/app", authenticateJwtToken, protectedRoutes);
 protectedRoutes.post("/add_product", tryCatch(addProduct));
 

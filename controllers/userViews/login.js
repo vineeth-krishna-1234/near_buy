@@ -9,6 +9,7 @@ import { errorLog } from "../../utils/logs.js";
 
 
 export const loginView = (req, res) => {
+
   if (EmailValidator.validate(req.body.email)) {
     userModel.findOne({ email: req.body.email }).then((queryResults) => {
       if (!queryResults) {

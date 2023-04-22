@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { vendorModel } from "../../schema/vendorSchema.js";
 
 export const SignupView = (req, res) => {
+
   if (EmailValidator.validate(req.body.email)) {
     vendorModel
       .findOne({ email: req.body.email })

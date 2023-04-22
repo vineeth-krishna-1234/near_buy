@@ -7,6 +7,7 @@ import { userModel } from "../../schema/userSchema.js";
 import { errorLog } from "../../utils/logs.js";
 
 export const SignupView = (req, res) => {
+
   if (EmailValidator.validate(req.body.email)) {
     userModel
       .findOne({ email: req.body.email })

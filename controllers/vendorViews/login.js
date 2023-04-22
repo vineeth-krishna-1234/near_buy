@@ -5,6 +5,7 @@ import { createJwtToken } from "../../utils/jwtUtils.js";
 import { vendorModel } from "../../schema/vendorSchema.js";
 
 export const loginView = (req, res) => {
+
   if (EmailValidator.validate(req.body.email)) {
     vendorModel.findOne({ email: req.body.email }).then((queryResults) => {
       if (!queryResults) {
