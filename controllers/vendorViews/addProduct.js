@@ -28,7 +28,11 @@ export const addProduct = (req, res, error) => {
                   vendorModel
                     .updateOne(
                       { _id: queryResult._id },
-                      { $push: { products: savedProduct._id } }
+                      {
+                        $push: {
+                          products: savedProduct._id,
+                        },
+                      }
                     )
                     .catch((error) => {
                       errorLog(error);
@@ -37,7 +41,9 @@ export const addProduct = (req, res, error) => {
                 })
                 .catch((error) => {
                   errorLog(error);
-                  response.push({ message: "Invalid product info" });
+                  response.push({
+                    message: "Invalid product info",
+                  });
                 });
               response.push({ message: "product Created" });
             }

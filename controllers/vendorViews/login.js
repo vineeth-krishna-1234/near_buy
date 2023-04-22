@@ -18,9 +18,14 @@ export const loginView = (req, res) => {
                 const token = createJwtToken({
                   email: req.body.email,
                 });
-                res.status(200).send({ message: "success", authToken: token });
+                res.status(200).send({
+                  message: "success",
+                  authToken: token,
+                });
               } else {
-                res.status(401).send({ message: "Password does not match" });
+                res.status(401).send({
+                  message: "Password does not match",
+                });
               }
             })
             .catch((error) => {

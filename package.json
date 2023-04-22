@@ -5,8 +5,8 @@
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon node index.js",
-    "build":"",
-    "dev":"nodemon node index.js",
+    "build": "",
+    "dev": "nodemon node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "kill": "kill -9 $(sudo lsof -i :9000 | sed -n '2 p' | cut -d' ' -f5 )"
   },

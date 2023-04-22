@@ -16,13 +16,19 @@ export const SignupView = (req, res) => {
             newUser
               .save()
               .then((data) => {
-                res.status(201).send({ message: "User created" });
+                res.status(201).send({
+                  message: "User created",
+                });
               })
               .catch((error) => {
-                res.status(400).send({ message: "Invalid data" });
+                res.status(400).send({
+                  message: "Invalid data",
+                });
               });
           } else {
-            res.status(403).send({ message: "Email already exist" });
+            res.status(403).send({
+              message: "Email already exist",
+            });
           }
         })
         .catch((error) => {

@@ -7,6 +7,7 @@ import cors from "cors";
 import pkg from "express";
 import * as dotenv from "dotenv";
 dotenv.config;
+import { errorHandler } from "./utils/errorHandler.js";
 //route import
 import routes from "./routes/mainRoutes.js";
 
@@ -18,6 +19,7 @@ app.use(cors({ credentials: true }));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use("", routes);
+app.use(errorHandler)
 app.listen(process.env.PORT || 3000, () => {
   statusLog(`server is listing at ${process.env.PORT}`);
 });
